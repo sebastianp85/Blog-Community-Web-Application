@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+</head>
+<body>
+<div class="container">
+  <h1>Search Results</h1>
+  <a th:href="@{/}">Home</a>
+  <hr/>
+  <div class="posts-container">
+    <div class="post" th:each="result : ${searchResults}">
+      <h2><a th:href="@{'/posts/' + ${result.id}}"
+             th:text="${result.title}">Title</a>
+      </h2>
+      <h5 th:text="'Published by ' + ${result.account.userName}">Account Username</h5>
+      <h5 th:text="'Published ' + ${result.createdAt}">Created</h5>
+      <p th:text="${result.body}">Body</p>
+      <br/>
+    </div>
+  </div>
+  <hr/>
+</div>
+</body>
+</html>
