@@ -26,15 +26,12 @@ public class UserDetailsService implements org.springframework.security.core.use
         }
 
         Account account = optionalAccount.get();
-        String username = account.getUserName();
-
         List<GrantedAuthority> grantedAuthorities = account
                 .getAuthorities()
                 .stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getName()))
                 .collect(Collectors.toList());
 
-        return new org.springframework.security.core.userdetails.User(username, account.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(account.getEmail(), account.getPassword(), grantedAuthorities);
     }
-
 }

@@ -126,7 +126,7 @@
         <form th:action="@{/logout}"
               method="POST">
             <div>
-                <p>Welcome, <span th:text="${#authentication.principal.username}">Username</span></p>
+                <p>Welcome, <span sec:authentication="name">Email</span></p>
                 <button type="submit">Logout</button>
             </div>
         </form>
